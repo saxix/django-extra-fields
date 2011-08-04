@@ -2,7 +2,10 @@
 from distutils.core import setup
 from distutils.command.install import INSTALL_SCHEMES
 import os
-import iadmin
+import dexf
+
+NAME = 'django-extra-fields'
+VERSION = RELEASE = dexf.get_version()
 
 for scheme in INSTALL_SCHEMES.values():
     scheme['data'] = scheme['purelib']
@@ -37,12 +40,12 @@ def scan_dir( target, packages = [], data_files=[] ):
             data_files.append([dirpath, [os.path.join(dirpath, f) for f in filenames]])
     return packages, data_files
 
-packages, data_files = scan_dir( 'iadmin' )
+packages, data_files = scan_dir( 'dexf' )
 
 setup(
-    name = "django-extra-fields",
-    version = ".".join(iadmin.__version__),
-    url = 'https://github.com/saxix/django-iadmin',
+    name = NAME,
+    version = RELEASE,
+    url = 'https://github.com/saxix/django-extra-fields',
     author = 'sax',
     author_email = 'sax@os4d.org',
     license='BSD',
@@ -51,8 +54,6 @@ setup(
     include_package_data=True,
     platforms = ['any'],
     zip_safe=False,
-    install_requires=['mock',],
-    dependecy_link =[],
     classifiers = ['Development Status :: 4 - Beta',
                    'Environment :: Web Environment',
                    'Framework :: Django',
