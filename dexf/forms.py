@@ -48,11 +48,11 @@ class ClassPathField(CharField):
             raise ValidationError(_("'%s' is not a valid classname" % value))
         return value
 
-class JSONField(CharField):
+class DictField(CharField):
 
     def __init__(self, encoding=settings.DEFAULT_CHARSET, max_length=None, min_length=None, *args, **kwargs):
         self.encoding = encoding
-        super(JSONField, self).__init__(max_length, min_length, *args, **kwargs)
+        super(DictField, self).__init__(max_length, min_length, *args, **kwargs)
 
 
     def prepare_value(self, value):
